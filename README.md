@@ -1,8 +1,7 @@
 # DEM-SR
 Name of code：“ESPCN.py” and “Image_to_BinaryData.zip”
-Developer and contact address: Ruichen Zhang
-Telephone number：18571729205
-e-mail：zrcbb@163.com
+
+Developer and contact address: Ruichen Z.
 year first available：2020
 hardware required：Win 10
 software required：Visual Studio 2015；Tensorflow 6.0
