@@ -74,36 +74,23 @@ with tf.Session() as sess:
         summary_str = sess.run(merged_summary_op, feed_dict={x1: batch_xs, x: batch_xt, N: 4});
         summary_writer.add_summary(summary_str, epoch);
 
-        # 显示训练中的详细信息
         if epoch % display_step == 0:
             print("Epoch:", '%04d' % (epoch+1),
                   "cost=", "{:.9f}".format(c))
 
-    print("完成!")
+    print("finished!")
 
     show_num = 6
-    encode_s,encode_b,encode_n ,encode_bi,y_predv= sess.run(
-        [x_small,y_pred1,y_pred2,y_pred3,y_pred], feed_dict={x1: mnist.train.images[:show_num], x: batch_xt, N: 4})
+    encode_s, y_predv= sess.run(
+        [x_small,y_pred], feed_dict={x1: mnist.train.images[:show_num], x: batch_xt, N: 4})
     
-    f, a = plt.subplots(6, 1, figsize=(1, 6))
+    f, a = plt.subplots(3, 1, figsize=(1, 3))
  #   for i in range(0,6):
          
     ORI = np.reshape(mnist.test.images[0], (1200, 1200)) 
     PRE1 = np.reshape(encode_s[0], (75, 75)) 
-    PRE2 = np.reshape(encode_b[0], (150, 150))
-    PRE3 = np.reshape(encode_n[0], (300, 300))
-    PRE4 = np.reshape(encode_bi[0], (600, 600))
-    PRE5 = np.reshape(y_predv[0], (1200, 1200))
-    scipy.misc.imsave('D:/fiveresults/rspcn10000/ori'+str(i)+'.jpg', ORI)
-    scipy.misc.imsave('D:/fiveresults/rspcn10000/pic75_'+str(i)+'.jpg', PRE1)
-    scipy.misc.imsave('D:/fiveresults/rspcn10000/pic150_'+str(i)+'.jpg', PRE2)
-    scipy.misc.imsave('D:/fiveresults/rspcn10000/pic300_'+str(i)+'.jpg', PRE3)
-    scipy.misc.imsave('D:/fiveresults/rspcn10000/pic600_'+str(i)+'.jpg', PRE4)
-    scipy.misc.imsave('D:/fiveresults/rspcn10000/pic1200_'+str(i)+'.jpg', PRE5)
+    PRE2 = np.reshape(y_predv[0], (1200, 1200))
     a[0].imshow(ORI, cmap ='gray')
     a[1].imshow(PRE1, cmap ='gray')
     a[2].imshow(PRE2, cmap ='gray')
-    a[3].imshow(PRE3, cmap ='gray')
-    a[4].imshow(PRE4, cmap ='gray')
-    a[5].imshow(PRE5, cmap ='gray')
     plt.show()
