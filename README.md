@@ -3,10 +3,11 @@ Name of code：“DEM-RSPCN.py”, “DEM-SR.py” and “Image_to_BinaryData.zi
 
 Developer and contact address: Ruichen Z.
 year first available：2020
+revised version available: March 2021
 hardware required：Win 10
 software required：Visual Studio 2015；Tensorflow 6.0
 program language：c++, python 
-program size: 6KB
+program size: 8KB
 
 Digital elevation model (DEM) is known as one of the most significant fundamental geographical data, 
 the theory, method and application of which are hot research issues in geography, especially in 
