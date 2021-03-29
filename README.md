@@ -1,5 +1,5 @@
 # DEM-SR
-Name of code：“DEM-RSPCN.py”, “DEM-SR.py” and “Image_to_BinaryData.zip”
+Name of code：“DEM-RSPCN.py” and “Image_to_BinaryData.zip”
 
 Developer and contact address: Ruichen Z.
 year first available：2020
