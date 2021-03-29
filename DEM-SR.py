@@ -31,16 +31,6 @@ x = tf.placeholder("float", [None, n_input_super])
 # corrupted image
 print("x.shape",x.shape)
 
-
-
-x_bicubic = tf.image.resize_bicubic(x_small, (1200, 1200))
-print("x_bicubic.shape:",x_bicubic.shape)
-x_nearest = tf.image.resize_nearest_neighbor(x_small, (1200, 1200))
-print("x_nearest.shape:",x_nearest.shape)
-x_bilin = tf.image.resize_bilinear(x_small, (1200, 1200))
-print("x_bilin.shape:",x_bilin.shape)
-
-
 #espcn
 net = slim.conv2d(x_small, 64, 5)
 net =slim.conv2d(net, 32, 3)
@@ -93,12 +83,6 @@ with tf.Session() as sess:
         PRE3 = np.reshape(encode_n[i], (1200, 1200))
         PRE4 = np.reshape(encode_bi[i], (1200, 1200))
         PRE5 = np.reshape(y_predv[i], (1200, 1200))
-        scipy.misc.imsave('D:/fiveresults/two-0.001-500/ori'+str(i)+'.jpg', ORI)
-        scipy.misc.imsave('D:/fiveresults/two-0.001-500/si'+str(i)+'.jpg', PRE1)
-        scipy.misc.imsave('D:/fiveresults/two-0.001-500/bi'+str(i)+'.jpg', PRE2)
-        scipy.misc.imsave('D:/fiveresults/two-0.001-500/ni'+str(i)+'.jpg', PRE3)
-        scipy.misc.imsave('D:/fiveresults/two-0.001-500/bii'+str(i)+'.jpg', PRE4)
-        scipy.misc.imsave('D:/fiveresults/two-0.001-500/predv'+str(i)+'.jpg', PRE5)
         a[0][i].imshow(ORI, cmap ='gray')
         a[1][i].imshow(PRE1, cmap ='gray')
         a[2][i].imshow(PRE2, cmap ='gray')
